@@ -1,0 +1,26 @@
+.demo-ev{background-color: rgb(200,200,200); height: 300px;padding: 0px; position: relative; overflow: hidden;margin-bottom: 4px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.1);}
+.demo-ev > div{display: inline-block;border:none;}
+.demo-ev > div > span:not(.tickets) {width: 15px; height: 15px; margin:8px; display: inline-block; }
+.tickets{margin-right: 8px; font-size: 14px; letter-spacing: 1.3px;}
+.demo-ev > div > span{vertical-align: middle;}
+.demo-ev > div.event-action > span{margin:8px 4px;}
+.event-action{position: absolute;bottom: 0px;right: 0px;padding: 0px 4px;}
+.info-event > span > a {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+.demo-ev > div.info-event > span{background-color: inherit;}
+.info-event > span > a > svg{width: 100%;height: 100%;}
+.demo-ev > div > svg{width: 15px; height: 15px;margin:4px;}
+@keyframes poppy
+  {
+    from, to{transform: scale(1);transform-origin: center;}
+    20%, 80%{transform: scale(1.5);transform-origin: center;}
+  }
+.event-action > svg.add{stroke: blue;animation: poppy 0.35s ease-in;}
+.event-action > svg.bookmark{fill: blue; stroke: blue;animation: poppy 0.35s ease-in;}

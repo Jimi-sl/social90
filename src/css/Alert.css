@@ -1,0 +1,11 @@
+.alert-info{position: relative;}
+.alert{margin-bottom: 2px; padding: 16px;letter-spacing: 1px;
+    border-radius: 3px;
+    }
+.alert-info .profile-pic{width: 35px; height: 35px; border-radius: 50%;background-color: rgb(200,200,200);}
+.action-icon > svg{width: 25px; height: 25px;}
+.alert-info .action-icon{margin-left: 50px;width: 25px; height: 25px; margin-top: 8px;}
+.alert-info > div span:nth-of-type(1){font-weight: 600; margin-right: 8px;/*color: gb(255,255,255) rgb(75,75,75);*/}
+.alert-info > div span{font-size: 14px; letter-spacing: 0.8px;/*color:rgb(230,230,230)rgb(75,75,75);*/}
+.alert-info > div > *{display: inline-block; vertical-align: middle;}
+.alert-info > span{position: absolute;top:0px;right: 0px;font-size: 12px; }

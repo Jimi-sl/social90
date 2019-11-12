@@ -1,0 +1,41 @@
+
+li.Post, li.Comment{padding: 16px;margin-bottom: 4px;font-weight: 100; letter-spacing: 1px;border-radius: 3px;position: relative;}
+li.Post {
+  border-left: 4px solid #3f93e9;
+}
+li.Post > svg, li.Comment > svg{width: 20px; height: 20px; position: absolute; right: 16px; top: 16px;}
+.user-info > a > *, .event-info > a > * {vertical-align: middle;}
+  .user-info > a > div, .event-info > div{display: inline-block;width: 48px; height: 48px; background-color: rgb(200,200,200); border-radius: 50%;margin-right: 16px; overflow: hidden;}
+  .user-info > a > div > img{width: 80%;margin-left: 10%; margin-top: 20%;}
+  .user-info > a > span:nth-of-type(1){font-size: 14px;padding-right: 8px}
+  .user-info > a > span:nth-of-type(2){font-size: 12px; border-left: 1px solid rgba(150,150,150,0.5); padding-left: 8px}
+  .content > div, .event-content > div{width: calc(100% - 48px); height: 300px; display: block; background-color: rgb(200,200,200); margin-left: 48px;border-radius: 3px;}
+  .event-content > div{display: none;}
+  .content > p, .event-content > p{padding-left: 48px; font-size: 14px;}
+  .action-btn, .event-footer{padding-top: 16px; }
+  .action-btn  svg, .event-footer > span:nth-of-type(2), .event-footer > span:nth-of-type(3){display: inline-block; width: 15px; height: 15px; border-radius: 50%; background-color: rgb(200,200,200);}
+  .action-btn  svg{background: none; border-radius: 0%;}
+  .action-btn > svg:nth-of-type(2){margin: 0px 32px;}
+  .event-footer > span:nth-of-type(3){margin: 0px 8px;}
+  .action-btn > a:nth-of-type(2) > svg, .event-footer > span:nth-of-type(2), .event-footer > span:nth-of-type(3){float: right;}
+  .content, .event-content{margin-bottom: 16px;}
+  @keyframes animateLike
+  {
+    from, to{transform: scale(1);transform-origin: center;}
+    20%, 80%{transform: scale(1.5);transform-origin: center;}
+  }
+  @keyframes animateRepost
+  {
+    from, to{transform-origin: center;}
+    from{transform:scale(1) rotateZ(0deg)}
+    to{transform:scale(1) rotateZ(360deg)}
+    20%{transform:scale(1.5) rotateZ(72deg)} 
+    80%{transform: scale(1.5) rotateZ(288deg);}
+    
+  }
+  .action-btn > svg.reposted{stroke:green; animation: animateRepost 0.35s ease-in;}
+  .action-btn > svg.liked{fill:red; stroke: red; animation: animateLike 0.35s ease-in;}
+  .post-menu{position: absolute;top:16px;right: -1px;text-align: center; padding: 16px; border-radius: 3px; display: none;}
+  .post-menu li{margin-bottom: 16px;font-size: 14px;}
+  .post-menu li:last-child{margin-bottom: 0px;}
+  .show-menu{display: block;}

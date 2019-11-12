@@ -1,0 +1,47 @@
+.profile-area{margin-left:calc(15px + 8.125%);width: calc(48.75% - 32px);/*box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.5);*/ display: inline-block; margin-right: 15px;}
+
+.profile-header{width: 100%; padding: 15px; position: relative;z-index: 1; border-radius: 3px}
+  .profile-pic{width: 100px;height: 100px;border-radius: 50%;background-color: rgb(200,200,200); margin-right: 15px; overflow: hidden;}
+  .profile-pic > img{width: 80%; margin-left: 10%; margin-top: 20%;}
+  .profile-deets > div > *{vertical-align: middle;display: inline-block;}
+  .profile-deets > div > div > span {
+  display: block;
+  letter-spacing: 0.8px;
+  font-size: 16px;
+}
+.profile-deets > div > div > span:nth-of-type(1){font-weight: 600; font-size: 18px;}
+.profile-deets button{border-style: none;color: white;background-color: #3f93e9;
+
+padding: 8px 18px;
+
+font-weight: bold;
+
+letter-spacing: 0.5px;
+
+border-radius: 3px;
+
+font-size: 12px;
+position: absolute;
+
+right: 30px;
+
+top: 30px;
+margin-top: 0px;
+margin-left: 0px;}
+.profile-header ul{margin: 0px; padding: 0px; list-style-type: none;}
+.profile-header li{display: inline-block;margin-right: 32px;
+
+font-size: 16px;
+
+font-weight: 500;
+
+/*color: rgb(75,75,75);*/
+letter-spacing: 1px;}
+.profile-header p{font-size: 12px; letter-spacing: 1px; margin: 32px 0px;}
+div.profile-area > ul.profile-posts{padding-top: 50px;}
+.fixed{position: fixed;}
+.profile-nav.fixed{top:0px;width: calc(48.75% - 32px); z-index: 1; left:calc(15px + 8.125%); padding: 15px;border-radius: 3px;}
+
+ul.profile-posts {
+    padding-bottom: 90px;
+}

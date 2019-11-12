@@ -1,0 +1,26 @@
+li.profile-deets .profile-pic{width: 48px; height: 48px;}
+li.profile-deets{padding: 15px; position: relative;}
+li.profile-deets > p{font-size: 12px; letter-spacing: 0.5px}
+li.profile-deets{margin-bottom: 8px; border-radius: 3px;}
+li.profile-deets > div > div > span.name{font-size: 14px}
+li.profile-deets .tag{font-size: 12px;}
+li.profile-deets > span{font-size: 10px; margin-top: 8px; display: inline-block;background-color: rgba(200,200,200,0.85); padding: 2px 6px; border-radius: 3px; letter-spacing: 0.5px; font-weight: 500}
+li.profile-deets button{border-style: none;color: white;background-color: #3f93e9;
+
+    padding: 8px 18px;
+    
+    font-weight: bold;
+    
+    letter-spacing: 0.5px;
+    
+    border-radius: 3px;
+    
+    font-size: 12px;
+    position: absolute;
+    
+    right: 30px;
+    
+    top: 30px;
+    margin-top: 0px;
+    margin-left: 0px;}
+    

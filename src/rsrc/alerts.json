@@ -1,0 +1,58 @@
+[
+    {
+        "tag" : "Kevin",
+        "action" : "Liked your post",
+        "iconType" : "Like",
+        "time" : "2s",
+        "seen" : false
+    },
+    {
+        "tag" : "Kevin",
+        "action" : "Reposted your post",
+        "iconType" : "Repost",
+        "time" : "2s",
+        "seen" : false
+    },
+    {
+        "tag" : "Kevin",
+        "action" : "Commented on your post",
+        "iconType" : "Comment",
+        "time" : "2s",
+        "seen" : false
+    },
+    {
+        "tag" : "Kevin",
+        "action" : "Liked your comment",
+        "iconType" : "Like",
+        "time" : "2s",
+        "seen" : true
+    },
+    {
+        "tag" : "Kevin",
+        "action" : "Liked your comment",
+        "iconType" : "Like",
+        "time" : "2s",
+        "seen" : true
+    },
+    {
+        "tag" : "Kevin",
+        "action" : "Liked your post",
+        "iconType" : "Like",
+        "time" : "2s",
+        "seen" : true
+    },
+    {
+        "tag" : "Kevin",
+        "action" : "Liked your post",
+        "iconType" : "Like",
+        "time" : "2s",
+        "seen" : true
+    },
+    {
+        "tag" : "Kevin",
+        "action" : "Liked your post",
+        "iconType" : "Like",
+        "time" : "2s",
+        "seen" : true
+    }
+]

@@ -1,0 +1,66 @@
+[
+    {
+        "id":1,
+        "type":"Post",
+        "tag":"Jimi",
+        "time":"2s",
+        "img": false,
+        "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
+    },
+    {
+        "id":2,
+        "type":"Comment",
+        "tag":"Jimi",
+        "time":"2s",
+        "img": false,
+        "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
+    },
+    {
+        "id":3,
+        "type":"Post",
+        "tag":"Jimi",
+        "time":"2s",
+        "img": true,
+        "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
+    },
+    {
+        "id":4,
+        "type":"Comment",
+        "tag":"Jimi",
+        "time":"2s",
+        "img": false,
+        "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
+    },
+    {
+        "id":5,
+        "type":"Post",
+        "tag":"Jimi",
+        "time":"2s",
+        "img": true,
+        "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
+    },
+    {
+        "id":6,
+        "type":"Comment",
+        "tag":"Jiggmi",
+        "time":"2s",
+        "img": true,
+        "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
+    },
+    {
+        "id":7,
+        "type":"Post",
+        "tag":"Jimi",
+        "time":"2s",
+        "img": false,
+        "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
+    },
+    {
+        "id":8,
+        "type":"Comment",
+        "tag":"Ji7yi",
+        "time":"2s",
+        "img": false,
+        "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
+    }
+]

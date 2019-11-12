@@ -1,0 +1,12 @@
+li.profile-deets{padding: 16px; margin-bottom: 8px; border-radius: 3px; position: relative;}
+li.profile-deets > div > div.party-title{display: block; margin-bottom: 16px;padding-bottom: 8px;}
+div.party-user-details .profile-pic{width: 48px; height: 48px; margin-right: 8px;}
+li.profile-deets > div > div.party-title > *, div.party-user-details > *{display: inline-block !important; vertical-align: middle;}
+li.profile-deets > div > div.party-title > *{vertical-align: baseline;}
+li.profile-deets .party-title > .name{font-size: 16px; font-weight: 500; letter-spacing: 1px;  padding-right: 8px;}
+li.profile-deets .party-title > .date{font-size: 12px; font-weight: 200; letter-spacing: 1px; padding-left: 16px;}
+div.party-user-details{margin-bottom: 16px;}
+li.profile-deets > p{font-size: 14px; margin: 0px;letter-spacing: 1px; font-weight: 100;line-height: 20px; margin-left: 56px;}
+li.profile-deets > div > div.party-user-details > span.tag{font-size: 16px;font-weight: 400;letter-spacing: 0.25px;}
+.emoji{width: 20px; height: 20px; background-color: rgb(200,200,200); border-radius: 50%; margin-left: 8px;}
+li.profile-deets > svg{width: 20px; height: 20px; position: absolute; right: 16px; top: 16px;}

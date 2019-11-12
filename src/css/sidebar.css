@@ -1,0 +1,28 @@
+.side-bar{margin:0px 15px;width: calc(35% - 30px);position: fixed;top: 0px; display:inline-block;}
+.side-bar h4{font-size: 14px; margin: 4px 0px; text-align: center; margin-top: 18px;}
+.cart-list,.plugs, .to-lync{position: relative;width: auto;border-radius: 3px;/*box-shadow: 3px 3px 1.5px rgba(0,0,0,0.5);*/ box-shadow: none;}
+.plugs, .to-lync{/*color: rgb(75,75,75);*/ margin-bottom: 12px;}
+.plugs ul, .to-lync ul{list-style-type: none; padding: 12px; margin: 0px;}
+.plugs ul li, .to-lync ul li {display: inline-block; margin-bottom: 8px; width: 100%;}
+.plugs ul li > *, .to-lync ul li > * {display: inline-block; vertical-align: middle;}
+.plugs ul li > div:nth-of-type(2) > span{font-size: 14px; letter-spacing: 0.8px;}
+.plugs ul li > div:nth-of-type(2) > span:nth-of-type(1){font-size: 12px;  letter-spacing: 1px;}
+.plugs ul li > div:nth-of-type(3){float: right;}
+.plugs ul li > div:nth-of-type(3) > span{font-size: 12px; text-align: center; margin-bottom: 4px; letter-spacing: 0.5px;}
+.plugs ul li > div:nth-of-type(3) > div{text-align: right;}
+.plugs ul li > div:nth-of-type(3) > div > svg{width: 12px; height: 12px;  display: inline-block; } 
+.plugs ul li > div:nth-of-type(3) > div > svg:nth-of-type(1){margin-right: 8px;}
+.plugs ul li > div > *, .to-lync ul li > div > *{display: block;} 
+.cart-list{display: none;}
+.cart-list h3,.plugs h3, .to-lync h3{margin: 0px; padding: 14px; /*color: rgb(75,75,75);*/font-size: 16px;font-weight: 400;}
+h3.bottom{color:#3f93e9;  letter-spacing: 0.5px; border-bottom: none;}
+.footer{background: none;border:none; position: relative; width: auto;}
+.footer ul{list-style-type: none; padding: 0px; margin: 0px;white-space: normal; margin-top: 16px;}
+.footer ul li{display: inline-block; font-size: 12px; margin-right: 16px;}
+.footer ul li:nth-last-child{margin-right: 0px;}
+.plugs .profile-pic, .to-lync .profile-pic{width: 30px; height: 30px; overflow: hidden;}
+.profile-pic > img{width: 80%; margin-left: 10%; margin-top: 20%;}
+.plugs button, .to-lync button{background-color: #3f93e9; border-style: none; padding:4px 12px; color: white; float: right; border-radius: 3px; font-weight: bold; font-size: 12px; letter-spacing: 0.5px; margin: 0px;} 
+.side-bar .footer h4{color: rgb(150,150,150); font-size: 14px; margin: 4px 0px; letter-spacing: 0px;text-align: left;margin-top: 18px;}
+.footer h4{color: rgb(150,150,150); font-size: 10px; margin: 8px 0px; letter-spacing: 0.8px;text-align: center;}
+

@@ -1,0 +1,35 @@
+.mobile-nav,.pop-up-nav{display: none;}
+.pop-up-nav > li.mobile{display: none;}
+@media only screen and (max-width: 1050px){
+.mobile-nav{width: 50px; display: inline-block; height: 50px;transform: translateY(-45%);}
+.page-title,.routeNav{left: 15px;}
+.mobile-nav > span{width: 100%; height: 2px; border-radius: 1px;opacity: 0.5;}
+.nav{display: none;}
+ul.pop-up-nav {right: 15px;}
+.pop-up-nav ul{padding: 0px; margin:0px;list-style-type: none;}
+.pop-up-nav > li.mobile{ display: list-item;}
+.mobile ul > li{padding: 16px 28px; vertical-align: baseline;}
+.mobile ul > li svg{margin-right: 8px;margin-bottom: -4px;}
+div.side-bar{display: none;}
+div.homePage > div:not(.ex-event), div.page > div {width: calc(100% - 30px);}
+div.homePage, div.profile-area, div.page {width: calc(100% - 30px); margin-left: 15px;}
+ul.profile-nav.fixed{left: 15px; width:calc(100% - 30px); }
+div.profile-header{width: auto;}
+header > a > img.mob{margin-left: 15px;}
+.mobile-nav {right: 15px;}
+body > div > button{right: 19px; bottom: calc(12.5% + 8px)}
+a.post-button,a.icon-post-button{right: 15px;bottom: 12.5%; }
+div.modalPost{width: calc(100% - 29px)}
+
+header > input.mob{
+width: calc(100% - (((12.5vh * 0.55) * 3.56) + 70px));margin-left: 15px;transform: translateY(10%);}
+}
+
+@media only screen and (max-width: 800px){
+			header > input.mob{width: calc(100% - (((12.5vh * 0.55) * 1.26785714286) + 90px))}
+			body > div > div > div > h1{margin-left: 15px;}
+			a.post-button{display: none;}
+			a.icon-post-button{display: block;}
+			div.login{width: 70%; margin-left: 15%;}
+
+		}
