@@ -32,7 +32,7 @@ var Post = (props) => {
 
     
         return (<li className={props.details.type}>
-                <svg onClick={() => showDropdownMenu()}  xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>                
+            <svg onClick={() => showDropdownMenu()} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
                 <ul className={"post-menu " + (showMenu === true ? "show-menu" : "")}>
                 <li>copy link to post</li>
                 <li>unlync user</li>
