@@ -11,23 +11,21 @@ function LandingPage(){
     let history = useHistory();
     let cookies = new Cookies();
 
-    let postRegister = async (cod) => {
-        //console.log(code);
-            cookies.set('register', 'oset', { path: '/' });
+    let postRegister = async (cod) => { 
+        var Obj = {code : cod};
+        var json = JSON.stringify(Obj);
             var inst = axios.create({withCredentials:true,
                                     headers:{
                                         'content-Type': 'application/json',
                                         "Accept":"/",
-                                        "Cache-Control":"no-cache",
-                                        "Authorization": "Bearer 35t54666grbrfbfgfbgbf"
-                                    },
-                                credentials:'same-origin'});
-            await inst.post(API,{data : cod})
+                                        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZCI6IjUxNTVkYTMxNGY0NjViYTRmM2FjOWE1NDAyNjk0MjA4NDVlNTAzMDciLCJqdGkiOiI1MTU1ZGEzMTRmNDY1YmE0ZjNhYzlhNTQwMjY5NDIwODQ1ZTUwMzA3IiwiaXNzIjoiIiwiYXVkIjoiQ0xJRU5UX0lEIiwic3ViIjpudWxsLCJleHAiOjE1NzQ2MDAzMzIsImlhdCI6MTU3NDU5NjczMiwidG9rZW5fdHlwZSI6ImJlYXJlciIsInNjb3BlIjpudWxsfQ.subZFEYogpNwhqBiybH_Qs5QncRZl-FLE7rPonPeLo95CcDQgL8RUiUNOsA_GskdNKomQOXvEF9dT4nx-C2WbEprg-nn6q__SmO7XDciNaW9QG_vuq4p83sUNTtrC1JvO7MPKJ40_bnqKxXlvew0pXvNktbc7MDIvgmfX7MFXBQ"
+                                    }});
+            await inst.post(API,json)
             .then(
-                response => {console.log(response.data);history.push("/Register");}
+                response => {console.log(response.data); cookies.set('register', 'oset', { path: '/' });history.push("/Register");}
             )
             .catch(
-                error => {console.log(error)}
+                error => {console.log(error);document.getElementById('code').placeholder = "Invalid Code"}
             );
             
             

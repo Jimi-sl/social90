@@ -15,13 +15,13 @@ function PostList(myData) {
 class Feed extends React.Component{
     constructor(props){
         super(props);
-        this.state = myData;
+        this.state = {data : myData};
     }
     
     
     render(){
        return(
-        <PostList data={this.state}/>
+        <PostList data={this.state.data}/>
       );
     }
 
