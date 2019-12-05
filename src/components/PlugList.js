@@ -1,22 +1,23 @@
 import React from 'react';
-import LyncCard from './LyncCard';
-//import myData from './../rsrc/lyncs.json';
+//import myData from './../rsrc/events.json';
 import axios from 'axios';
+import PlugCard from './PlugCard';
 
-const API =  'http://localhost:8888/GitHub/middlewares90/api/getProfileLyncs/';
+const API =  'http://localhost:8888/GitHub/middlewares90/api/getProfilePlugs/';
+
  
 
-function LyncListGen(myData) {
+function PlugListGen(myData) {
     const data = myData.data;
     const listItems = data.map((detailsInfo) =>
-    <LyncCard details={detailsInfo} key={detailsInfo.id} />
+    <PlugCard details={detailsInfo} key={detailsInfo.id} />
     );
     return (
       <ul className='profile-posts' >{listItems}</ul>
     );
 }
 
-class LyncsList extends React.Component{
+class PlugList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -25,7 +26,7 @@ class LyncsList extends React.Component{
           error: null,
         };
     }
-    
+
     async componentDidMount() {
         this.setState({ isLoading: true });
         var inst = axios.create({withCredentials:true,
@@ -49,12 +50,13 @@ class LyncsList extends React.Component{
       }
     }
     
+    
     render(){
        return(
-        <LyncListGen data={this.state.hits}/>
+        <PlugListGen data={this.state.hits}/>
       );
     }
 
   }
 
-  export default LyncsList;
+  export default PlugList;

@@ -118,7 +118,7 @@ form > a {
     position: relative;
 }
 .divForm > div.gender{padding-top: 11px; padding-bottom:11px; }
-select{font-size: 18px; color: rgb(150,150,150); border-width: 0px; width: 100%; border-image-width: 0px; border-radius: 0px;background-color: white;}
+select{font-size: 18px; color: rgb(150,150,150); border-width: 0px; width: 100%; border-image-width: 0px; border-radius: 0px;background-color: white;appearance: none;}
 .divForm > div > svg{position: absolute; width: 15px; height: 15px; right:8px; top: 50%; transform: translateY(-50%);stroke: grey}
 .divForm > div:nth-of-type(1){margin-right: 4px;}
 .divForm > div:nth-of-type(2){margin-left: 4px;}
@@ -783,4 +783,5 @@ select{font-size: 18px; color: rgb(150,150,150); border-width: 0px; width: 100%;
     border-left-color: #e6e6e6;
     cursor: default;
   }
+  select::-ms-expand{display:none;}
   

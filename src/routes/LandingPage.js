@@ -28,7 +28,6 @@ function LandingPage(){
                 error => {console.log(error);document.getElementById('code').placeholder = "Invalid Code"}
             );
             
-            
             /* let { data } = res.data;
             this.setState({ users: data }); */
     

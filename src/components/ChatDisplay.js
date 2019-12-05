@@ -8,7 +8,7 @@ class ChatDisplay extends React.Component{
           <div className="chat-text">
               <div>
                 <div className="profile-pic"></div>
-                <span>{this.props.details.tag}</span>
+                <span>{this.props.details.Tag}</span>
               </div>
               <span>{this.props.details.text}</span>
             <span>{this.props.details.time}</span>

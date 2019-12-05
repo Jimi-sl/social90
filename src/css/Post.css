@@ -3,11 +3,14 @@ li.Post, li.Comment{padding: 16px;margin-bottom: 4px;font-weight: 100; letter-sp
 li.Post {
   border-left: 4px solid #3f93e9;
 }
+.replying{font-size: 12px; text-align: left; letter-spacing: 0.8px;margin:8px 0px;}
+.replying span, .repost-info span{color: #3f93e9; font-weight: 800}
+.repost-info{text-align: center; font-size: 12px;letter-spacing: 0.8px;margin:0px;}
 li.Post > svg, li.Comment > svg{width: 20px; height: 20px; position: absolute; right: 16px; top: 16px;}
 .user-info > a > *, .event-info > a > * {vertical-align: middle;}
   .user-info > a > div, .event-info > div{display: inline-block;width: 48px; height: 48px; background-color: rgb(200,200,200); border-radius: 50%;margin-right: 16px; overflow: hidden;}
   .user-info > a > div > img{width: 80%;margin-left: 10%; margin-top: 20%;}
-  .user-info > a > span:nth-of-type(1){font-size: 14px;padding-right: 8px}
+  .user-info > a > span:nth-of-type(1){font-size: 14px;padding-right: 8px; font-weight: 600;}
   .user-info > a > span:nth-of-type(2){font-size: 12px; border-left: 1px solid rgba(150,150,150,0.5); padding-left: 8px}
   .content > div, .event-content > div{width: calc(100% - 48px); height: 300px; display: block; background-color: rgb(200,200,200); margin-left: 48px;border-radius: 3px;}
   .event-content > div{display: none;}

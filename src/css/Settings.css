@@ -4,7 +4,11 @@ button {background-color: #3f93e9;border-style: none;padding: 8px 32px;letter-sp
 form > div{margin-left: 48px;}
 form > div > h3{font-size: 14px;letter-spacing: 0.5px;}
 form > div > p{font-size: 14px;letter-spacing: 0.2px;}
-form svg{ width:30px; height: 30px; }
-form svg.active{stroke:#3f93e9;}
-.theme-setter > button{background: none; padding: 0px; margin: 0px;margin-top: 10px;}
+.theme-setter svg{ width:30px; height: 30px; }
+.theme-setter svg.active{stroke:#3f93e9;}
+.theme-setter > button{background: none; padding: 0px; margin: 0px;}
 .theme-setter > button:nth-of-type(2){margin-left: 20px;}
+div.page > div.settings-container{padding:0px 15px;margin: 0px; margin-top: 45px; width: 100%;}
+.settings-container > h2{ margin:0px; padding: 24px 0px;padding-left: 15px;font-size: 20px;letter-spacing: 1px;position:relative;}
+.settings-container > h2 > svg{position: absolute;width:20px; height: 20px; top: 50%; right: 0px; transform: translateY(-50%)}
+.theme-setter{position:absolute; top: 50%; right: 10px; transform: translateY(-50%)}

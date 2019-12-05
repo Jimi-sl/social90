@@ -1,20 +1,20 @@
 import React from 'react';
-import  Feed from './../components/Feed';
+import  ProfilePosts from './../components/ProfilePosts';
 import  ProfileHeader from './../components/ProfileHeader';
 import './../css/Profile.css';
-import EventList from './../components/EventList';
+import PlugList from './../components/PlugList';
 import LyncsList from './../components/LyncsList';
 
  const ProfileContent = (props) => {
      let path = props.location;
 if(path === '/User-Profile/Jimi'){
-    return(<Feed/>);
+    return(<ProfilePosts/>);
 }
 else if(path === '/User-Profile/Jimi/Lyncs'){
     return(<LyncsList/>);
 }
-else if(path === '/User-Profile/Jimi/Events'){
-    return(<EventList/>);
+else if(path === '/User-Profile/Jimi/Plugs'){
+    return(<PlugList/>);
 }else
 {
     return(<p>{path}</p>);

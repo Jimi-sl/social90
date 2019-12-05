@@ -31,7 +31,7 @@ var Post = (props) => {
     }
 
     
-        return (<li className={props.details.type}>
+        return (<li className={props.details.Type}>
             <svg onClick={() => showDropdownMenu()} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
                 <ul className={"post-menu " + (showMenu === true ? "show-menu" : "")}>
                 <li>copy link to post</li>
@@ -40,13 +40,15 @@ var Post = (props) => {
                 <li>block user</li>
                 <li>report user</li>
                 </ul>
+                {props.details.repost_id !== "0" ?<p className="repost-info">Repost by <span>{props.details.RepostTag}</span></p> : null}
                 <div className="user-info">
                 <Link to={'/User-Profile/Jimi'}>
                 <div><img  alt="logo"  className="mob" src={defaultPhoto}/></div>
-                <span>{props.details.tag}</span>
-                <span>{props.details.time}</span>
+                <span>{props.details.Tag}</span>
+                <span>{props.details.date}</span>
                 </Link>
                 </div>
+                {props.details.comment_id !== "0" ?<p className="replying">Reply to <br/><span>{props.details.CommentTag}</span></p> : null}
                 <div className="content">
                 <p>{props.details.text}</p>
                 <ImgRender hasImg={props.details.img}/>

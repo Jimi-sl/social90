@@ -25,7 +25,7 @@ export const GlobalStyles = createGlobalStyle`
 
   .nav-toggle svg{fill: ${({ theme }) => theme.text};}
   
-  .action-btn > svg, .routeNav > svg, .plugs svg, .demo-ev svg, form svg,.event-footer > svg:nth-of-type(1), .event-footer > svg:nth-of-type(2),.event-content > span > svg, .action-icon > svg.comment,li.Post  svg, li.Comment  svg,header svg,li.profile-deets > svg, .modalPost svg{stroke: ${({ theme }) => theme.text};}
+  .action-btn > svg, .routeNav > svg, .plugs svg, .demo-ev svg, .theme-setter svg,.event-footer > svg:nth-of-type(1), .event-footer > svg:nth-of-type(2),.event-content > span > svg, .action-icon > svg.comment,li.Post  svg, li.Comment  svg,header svg,li.profile-deets > svg, .modalPost svg,.settings-container > h2 > svg{stroke: ${({ theme }) => theme.text};}
 
   .modal{background:${({ theme }) => theme.modal};}
 
@@ -40,9 +40,9 @@ export const GlobalStyles = createGlobalStyle`
 
   .chat-content > div > textarea,.chat-container h1,ul.profile-nav.fixed{background:${({ theme }) => theme.backColor};}
 
-  .action-btn, .event-footer,h3.bottom,.chat-content > div > textarea{ border-style: none;border-top:1px solid ${({ theme }) => theme.toggleBorder};}
+  .action-btn, .event-footer,h3.bottom,.chat-content > div > textarea,.settings-container > h2:nth-of-type(1){ border-style: none;border-top:1px solid ${({ theme }) => theme.toggleBorder};}
 
-  .cart-list h3,.plugs h3, .to-lync h3,.pop-up-nav > li.mobile,.chat-container h1,li.profile-deets .party-title{border-bottom:1px solid ${({ theme }) => theme.toggleBorder};}
+  .cart-list h3,.plugs h3, .to-lync h3,.pop-up-nav > li.mobile,.chat-container h1,li.profile-deets .party-title,.settings-container > h2,.settings-container > h2:nth-of-type(1){border-bottom:1px solid ${({ theme }) => theme.toggleBorder};}
   
   .alert.unseen,.chat-list > ul > li:nth-of-type(1){background-color: ${({ theme }) => theme.unseen};}
 

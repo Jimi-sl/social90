@@ -45,7 +45,7 @@ function ProfileHeader() {
 
                     
                 </div>
-                <ul className={"profile-nav " + navClass}><li><NavLink exact to={"/User-Profile/Jimi"} activeClassName="active">Posts</NavLink></li><li><NavLink to={"/User-Profile/Jimi/Lyncs"} activeClassName="active">Lyncs</NavLink></li><li><NavLink to={"/User-Profile/Jimi/Events"} activeClassName="active">Events</NavLink></li></ul>
+                <ul className={"profile-nav " + navClass}><li><NavLink exact to={"/User-Profile/Jimi"} activeClassName="active">Posts</NavLink></li><li><NavLink to={"/User-Profile/Jimi/Lyncs"} activeClassName="active">Lyncs</NavLink></li><li><NavLink to={"/User-Profile/Jimi/Plugs"} activeClassName="active">Plugs</NavLink></li></ul>
                 </div>
                 
             );
