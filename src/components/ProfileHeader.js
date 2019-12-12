@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import defaultPhoto from './../img/default-pic.png';
-import {NavLink} from 'react-router-dom';
+import {NavLink,useRouteMatch} from 'react-router-dom';
 
 
 
 function ProfileHeader() {
 
     const [navClass, setNavClass] = useState('');
+    let {url} = useRouteMatch();
 
 
     useEffect(() => {
@@ -45,28 +46,10 @@ function ProfileHeader() {
 
                     
                 </div>
-                <ul className={"profile-nav " + navClass}><li><NavLink exact to={"/User-Profile/Jimi"} activeClassName="active">Posts</NavLink></li><li><NavLink to={"/User-Profile/Jimi/Lyncs"} activeClassName="active">Lyncs</NavLink></li><li><NavLink to={"/User-Profile/Jimi/Plugs"} activeClassName="active">Plugs</NavLink></li></ul>
+                <ul className={"profile-nav " + navClass}><li><NavLink exact to={`${url}`} activeClassName="active">Posts</NavLink></li><li><NavLink to={`${url}/Lyncs`} activeClassName="active">Lyncs</NavLink></li><li><NavLink to={`${url}/Plugs`} activeClassName="active">Plugs</NavLink></li></ul>
                 </div>
                 
             );
 }
 
-/* window.addEventListener('load', function() {
-    var container = document.getElementsByClassName("body-container")[0];
-    var nav = document.getElementsByClassName("profile-nav")[0];
-    var sticky = nav.offsetTop;
-    
-    container.addEventListener("scroll", function(){
-        
-        if(container.scrollTop >= sticky)
-        {
-            nav.classList.add("fixed");
-        }
-        else
-        {
-            nav.classList.remove("fixed");
-        }
-    });
-});
- */
 export default ProfileHeader;

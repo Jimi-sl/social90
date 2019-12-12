@@ -1,0 +1,12 @@
+.page-title.set > h1 > svg{width: 20px; height: 20px; margin-bottom: -4px; margin-right: 4px;}
+.page-title > h1{margin-left: 12px;}
+.set-cont{margin-top: 65px;}
+.set-cont > *{margin-left: 12px;}
+.set-cont > input[type*='text']{margin-left: 18px; }
+.set-cont > input[type*='text']{width: 100%; padding: 8px 12px; border-radius: 3px; font-size: 14px;;letter-spacing: 1px;}
+.set-cont > input[type*='text']:nth-of-type(3){margin-bottom: 8px;}
+.set-cont > input[type*='button']{color: white;padding: 8px 12px; background-color: #3f93e9; border-radius: 3px; font-size: 14px; font-weight: 600; margin-top: 8px; border-style: none}
+.set-cont h2{font-size: 18px;margin-top: 20px;}
+select{background-color: white;padding: 6px 9px;font-size: 14px;border-style: none;appearance: none;padding-right: 24px;}
+.select-option{display: inline-block; border-radius: 3px;position: relative;}
+.select-option > svg{width:15px;height: 15px;position: absolute;right: 4px;top: 50%; transform: translateY(-40%)}

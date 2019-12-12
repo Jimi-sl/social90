@@ -1,6 +1,6 @@
 import React from 'react';
 //import myData from './../rsrc/chatList.json';
-import ChatIcon from './../components/ChatIcon';
+import ChatIcon from './../components/ChatIcon.js';
 import axios from 'axios';
 
 
@@ -9,16 +9,16 @@ const API =  'http://localhost:8888/GitHub/middlewares90/api/getChatList/';
 
 function ChatListGen(myData) {
     const data = myData.data;
-    console.log(data);
-    const listItems = data.map((detailsInfo) =>
-    <ChatIcon details={detailsInfo} key={detailsInfo.id} />
-    );
+      var listItems = data.map((detailsInfo) =>
+      <ChatIcon details={detailsInfo} key={detailsInfo.id} />
+      );
     return (
       <ul>{listItems}</ul>
     );
 }
 
 class ChatList extends React.Component{
+  _isMounted = false;
     constructor(props){
         super(props);
         this.state = {
@@ -29,6 +29,7 @@ class ChatList extends React.Component{
     }
     
     async componentDidMount() {
+        this._isMounted = true;
         this.setState({ isLoading: true });
         var inst = axios.create({withCredentials:true,
           headers:{
@@ -38,17 +39,23 @@ class ChatList extends React.Component{
           }});
           try {
             const result = await inst.get(API);
-            console.log(result);
+            //console.log(result);
+            if (this._isMounted) {
             this.setState({
               hits: result.data,
               isLoading: false
             });
+          }
           } catch (error) {
             this.setState({
               error,
               isLoading: false
             });
       }
+    }
+
+    componentWillUnmount() {
+      this._isMounted = false;
     }
     
     render(){

@@ -8,7 +8,7 @@ const API =  'http://localhost:8888/GitHub/middlewares90/api/getPostFeeds/';
 function PostList(myData) {
     const data = myData.data;
   
-    console.log(data);
+    //console.log(data);
 
     const listItems = data.map((detailsInfo) =>
     <Post details={detailsInfo} key={detailsInfo.id} />
@@ -29,7 +29,6 @@ class Feed extends React.Component{
     }
     
     async componentDidMount() {
-        this.setState({ isLoading: true });
         var inst = axios.create({withCredentials:true,
           headers:{
               'content-Type': 'application/json',
@@ -38,7 +37,6 @@ class Feed extends React.Component{
           }});
           try {
             const result = await inst.get(API);
-            console.log(result);
             this.setState({
               hits: result.data,
               isLoading: false

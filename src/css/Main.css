@@ -93,3 +93,4 @@ ul {
 input, button {
   -webkit-appearance: none;
 }
+.modalTitle span{font-weight: 600}

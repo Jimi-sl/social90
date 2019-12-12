@@ -1,8 +1,8 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import './../css/Post.css';
 import defaultPhoto from './../img/default-pic.png';
 import {Link,useLocation} from 'react-router-dom';
-
+import axios from 'axios';
 
 function ImgRender(props) {
     const hasImg = props.hasImg;
@@ -12,13 +12,20 @@ function ImgRender(props) {
     return ""; 
 }
 
+
+  
 var Post = (props) => {
     let location = useLocation();
-
 
     const [like, setLike] = useState();
     const [repost, setRepost] = useState();
     const [showMenu,setShowMenuState] = useState(false);
+    const lApiUrl = 'http://localhost:8888/GitHub/middlewares90/api/postFtn/likeToggle/';
+    const rpApiUrl = 'http://localhost:8888/GitHub/middlewares90/api/postFtn/repostToggle/';
+
+    const iLApiUrl = 'http://localhost:8888/GitHub/middlewares90/api/postFtn/isLiked/';
+    const iRpApiUrl = 'http://localhost:8888/GitHub/middlewares90/api/postFtn/isReposted/';
+
 
     function hideDropdownMenu(){
         setShowMenuState(false);
@@ -30,6 +37,73 @@ var Post = (props) => {
         document.addEventListener('click',hideDropdownMenu);
     }
 
+
+    useEffect(() => {
+        isLiked();
+        isReposted();
+      });
+    
+
+    const likeToggle = () => {
+        var Obj = {'postId' : props.details.post_id, 'commentId': props.details.comment_id};
+        var json = JSON.stringify(Obj);
+        console.log(json);
+        var inst = axios.create({withCredentials:true,
+        headers:{
+            'content-Type': 'application/json',
+            "Accept":"/",
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZCI6IjIxNDFjM2IxNzc5YTY0OWJlNjVkNDYxMWQ4NDVjNjU3MjEyZTRjODMiLCJqdGkiOiIyMTQxYzNiMTc3OWE2NDliZTY1ZDQ2MTFkODQ1YzY1NzIxMmU0YzgzIiwiaXNzIjoiIiwiYXVkIjoiQ0xJRU5UX0lEIiwic3ViIjpudWxsLCJleHAiOjE1NzUyMDQ5MzYsImlhdCI6MTU3NTIwMTMzNiwidG9rZW5fdHlwZSI6ImJlYXJlciIsInNjb3BlIjpudWxsfQ.qM0uTZMebRVgiYmUf8yXYc5EyX1WNopNeHfw6-7_hXYnkqJLWEG7i_F7ts-NRg1OERMrQgbv2REa1wwuPYY_xOAVmCOprPUzor95ynm0MYgY2zcCBIi0pe0b-FiOZlsys3zsgQ9tnm8fBqS_ZN9bmqwLfLS3mlLv-CF-1XzwqKE"
+        }});
+        inst.post(lApiUrl, json)
+        .then((result) => {
+            setLike(like === true ? false : true);
+        }).catch((error) => {console.log(error)});
+      };
+
+      const isLiked = () => {
+        var Obj = {'postId' : props.details.post_id, 'commentId': props.details.comment_id};
+        var json = JSON.stringify(Obj);
+        var inst = axios.create({withCredentials:true,
+        headers:{
+            'content-Type': 'application/json',
+            "Accept":"/",
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZCI6IjIxNDFjM2IxNzc5YTY0OWJlNjVkNDYxMWQ4NDVjNjU3MjEyZTRjODMiLCJqdGkiOiIyMTQxYzNiMTc3OWE2NDliZTY1ZDQ2MTFkODQ1YzY1NzIxMmU0YzgzIiwiaXNzIjoiIiwiYXVkIjoiQ0xJRU5UX0lEIiwic3ViIjpudWxsLCJleHAiOjE1NzUyMDQ5MzYsImlhdCI6MTU3NTIwMTMzNiwidG9rZW5fdHlwZSI6ImJlYXJlciIsInNjb3BlIjpudWxsfQ.qM0uTZMebRVgiYmUf8yXYc5EyX1WNopNeHfw6-7_hXYnkqJLWEG7i_F7ts-NRg1OERMrQgbv2REa1wwuPYY_xOAVmCOprPUzor95ynm0MYgY2zcCBIi0pe0b-FiOZlsys3zsgQ9tnm8fBqS_ZN9bmqwLfLS3mlLv-CF-1XzwqKE"
+        }});
+        inst.post(iLApiUrl, json)
+        .then((result) => {
+            setLike(result.data === 1 ? true : false);
+        }).catch((error) => {console.log(error)});
+      };
+    
+      const repostToggle = () => {
+        var Obj = {'postId' : props.details.post_id, 'commentId': props.details.comment_id};
+        var json = JSON.stringify(Obj);
+        var inst = axios.create({withCredentials:true,
+        headers:{
+            'content-Type': 'application/json',
+            "Accept":"/",
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZCI6IjIxNDFjM2IxNzc5YTY0OWJlNjVkNDYxMWQ4NDVjNjU3MjEyZTRjODMiLCJqdGkiOiIyMTQxYzNiMTc3OWE2NDliZTY1ZDQ2MTFkODQ1YzY1NzIxMmU0YzgzIiwiaXNzIjoiIiwiYXVkIjoiQ0xJRU5UX0lEIiwic3ViIjpudWxsLCJleHAiOjE1NzUyMDQ5MzYsImlhdCI6MTU3NTIwMTMzNiwidG9rZW5fdHlwZSI6ImJlYXJlciIsInNjb3BlIjpudWxsfQ.qM0uTZMebRVgiYmUf8yXYc5EyX1WNopNeHfw6-7_hXYnkqJLWEG7i_F7ts-NRg1OERMrQgbv2REa1wwuPYY_xOAVmCOprPUzor95ynm0MYgY2zcCBIi0pe0b-FiOZlsys3zsgQ9tnm8fBqS_ZN9bmqwLfLS3mlLv-CF-1XzwqKE"
+        }});
+        inst.post(rpApiUrl, json)
+        .then((result) => {
+            setRepost(repost === true ? false : true);
+        }).catch((error) => {console.log(error)});
+      };
+
+      const isReposted = () => {
+        var Obj = {'postId' : props.details.post_id, 'commentId': props.details.comment_id};
+        var json = JSON.stringify(Obj);
+        var inst = axios.create({withCredentials:true,
+        headers:{
+            'content-Type': 'application/json',
+            "Accept":"/",
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZCI6IjIxNDFjM2IxNzc5YTY0OWJlNjVkNDYxMWQ4NDVjNjU3MjEyZTRjODMiLCJqdGkiOiIyMTQxYzNiMTc3OWE2NDliZTY1ZDQ2MTFkODQ1YzY1NzIxMmU0YzgzIiwiaXNzIjoiIiwiYXVkIjoiQ0xJRU5UX0lEIiwic3ViIjpudWxsLCJleHAiOjE1NzUyMDQ5MzYsImlhdCI6MTU3NTIwMTMzNiwidG9rZW5fdHlwZSI6ImJlYXJlciIsInNjb3BlIjpudWxsfQ.qM0uTZMebRVgiYmUf8yXYc5EyX1WNopNeHfw6-7_hXYnkqJLWEG7i_F7ts-NRg1OERMrQgbv2REa1wwuPYY_xOAVmCOprPUzor95ynm0MYgY2zcCBIi0pe0b-FiOZlsys3zsgQ9tnm8fBqS_ZN9bmqwLfLS3mlLv-CF-1XzwqKE"
+        }});
+        inst.post(iRpApiUrl, json)
+        .then((result) => {
+            setRepost(result.data === 1 ? true : false);
+        }).catch((error) => {console.log(error)});
+      };
     
         return (<li className={props.details.Type}>
             <svg onClick={() => showDropdownMenu()} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
@@ -54,15 +128,15 @@ var Post = (props) => {
                 <ImgRender hasImg={props.details.img}/>
                 </div>
                 <div className="action-btn">
-                <svg onClick={() => setLike(like === true ? false : true)} className={like === true ? "liked" : ""} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                <svg onClick={() => setRepost(repost === true ? false : true)} className={repost === true ? "reposted" : ""} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+                <svg onClick={() => likeToggle()} className={like === true ? "liked" : ""} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                <svg onClick={() => repostToggle()} className={repost === true ? "reposted" : ""} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
                 <Link to={{
     pathname: "/Comment",
-    state: { background: location },
+    state: { background: location, post_id : props.details.post_id, comment_id : props.details.comment_id, repost_id : props.details.repost_id},
   }}><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9l6 6-6 6"/><path d="M4 4v7a4 4 0 0 0 4 4h11"/></svg></Link>
                 <Link to={{
     pathname: "/Stats/Likes",
-    state: { background: location },
+    state: { background: location, post_id : props.details.post_id, comment_id : props.details.comment_id, repost_id : props.details.repost_id},
   }}><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg></Link>               
                 </div>
             </li>);

@@ -19,9 +19,14 @@ const EventDeets = lazy(() => import('./routes/EventDetails.js'));
 const EventProfile = lazy(() => import('./routes/EventProfile.js'));
 const Post = lazy(() => import('./routes/PostModal.js'));
 const Comment = lazy(() => import('./routes/CommentModal.js'));
-const Stats = lazy(() => import('./routes/StatModal.js'));
+const LikesModal = lazy(() => import('./routes/LikesModal.js'));
+const RepostsModal = lazy(() => import('./routes/RepostsModal.js'));
 const Landing = lazy(() => import('./routes/LandingPage.js'));
 const Register = lazy(() => import('./routes/Register.js'));
+const Account = lazy(() => import('./components/Account.js'));
+const Privacy = lazy(() => import('./components/Privacy.js'));
+const Notifications = lazy(() => import('./components/Notifications.js'));
+const Deactivation = lazy(() => import('./components/Deactivation.js'));
 
 
 function PrivateRoute({ children, ...rest }) {
@@ -91,7 +96,7 @@ const RouterNav = (props) => {
         <PrivateRoute path="/Alerts">
         <Alerts/>  
         </PrivateRoute>
-        <PrivateRoute path="/Settings">
+        <PrivateRoute exact to path="/Settings">
         <Settings/>  
         </PrivateRoute>
         <PrivateRoute path="/Bookmarks">
@@ -106,6 +111,18 @@ const RouterNav = (props) => {
         <PrivateRoute path="/Event/Details">
         <EventDeets/>   
         </PrivateRoute>
+        <PrivateRoute path="/Settings/Account">
+        <Account/>   
+        </PrivateRoute>
+        <PrivateRoute path="/Settings/Privacy">
+        <Privacy/>   
+        </PrivateRoute>
+        <PrivateRoute path="/Settings/Notifications">
+        <Notifications/>   
+        </PrivateRoute>
+        <PrivateRoute path="/Settings/Deactivation">
+        <Deactivation/>   
+        </PrivateRoute>
         <PrivateRoute path="/Event/Profile">
         <EventProfile location={location} />    
         </PrivateRoute>
@@ -113,7 +130,8 @@ const RouterNav = (props) => {
         {/* Show the modal when a background page is set */}
       {background && <PrivateRoute path="/Post"><Post/></PrivateRoute>}
       {background && <PrivateRoute path="/Comment"><Comment/></PrivateRoute>}
-      {background && <PrivateRoute path="/Stats/Likes"><Stats/></PrivateRoute>}    
+      {background && <PrivateRoute path="/Stats/Likes"><LikesModal/></PrivateRoute>}    
+      {background && <PrivateRoute path="/Stats/Reposts"><RepostsModal/></PrivateRoute>}    
       <Route path='/Login'>{
       (typeof fakeAuth.isAuthenticated) === "string" ? 
       <Redirect
