@@ -1,6 +1,6 @@
 .chat-page{height: 100%;}
 .chat-page .side-bar{margin-left: 30px;}
-.chat-container{width: calc(65% - 30px); margin-left: 15px;display: inline-block;/*flex-direction: row;justify-content: center;*/top: 50%;position: relative;transform: translateY(-60%); z-index: 2;}
+.chat-container{width: calc(65% - 30px); margin-left: 15px;display: inline-block;top: 50%;position: relative;transform: translateY(-60%); z-index: 0;}
 .chat-container > div{margin: 0px 1px;}
 .chat-list{margin-left: 2px; border-radius: 3px; }
 .chat-list > ul{padding: 0px; list-style-type: none; margin-top: 4px;overflow-y: scroll;height: 400px; margin-bottom: 0px;display: block;}
@@ -12,6 +12,7 @@
 .chat-info > span{font-size: 14px; }
 .chat-info > div{margin-bottom: 4px;}
 .chat-info > div > *{display: inline-block; vertical-align: middle;}
+.chat-info > div > span{font-weight: 600;letter-spacing: 1px;}
 .chat-list h1, .chat-content h1{/*background-color: #1f1e1e;*/box-shadow: 0px 2px 2px rgba(0,0,0,0.5); display: block; margin-left: 0px;padding: 14px 0px; padding-left: 24px;}
 .chat-list, .chat-content{/*flex: 50%;max-width: 50%;*/position: relative; display: inline-block; vertical-align: top; background-color: rgba(0,0,0,0); box-shadow: none;}
 .chat-list{/*flex: 40%;max-*/width: calc(40% - 2px)}
