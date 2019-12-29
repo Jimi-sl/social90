@@ -3,9 +3,10 @@ import {useHistory} from 'react-router-dom';
 import './../css/landing.css';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
+import Settings from './../appsettings';
 
 
-const API = 'http://localhost:8888/GitHub/middlewares90/api/codeAuthentication/';
+const API = Settings.baseUrl + Settings.endPoints.codeAuthentication;
 
 function LandingPage(){
     let history = useHistory();
@@ -18,7 +19,7 @@ function LandingPage(){
                                     headers:{
                                         'content-Type': 'application/json',
                                         "Accept":"/",
-                                        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZCI6IjUxNTVkYTMxNGY0NjViYTRmM2FjOWE1NDAyNjk0MjA4NDVlNTAzMDciLCJqdGkiOiI1MTU1ZGEzMTRmNDY1YmE0ZjNhYzlhNTQwMjY5NDIwODQ1ZTUwMzA3IiwiaXNzIjoiIiwiYXVkIjoiQ0xJRU5UX0lEIiwic3ViIjpudWxsLCJleHAiOjE1NzQ2MDAzMzIsImlhdCI6MTU3NDU5NjczMiwidG9rZW5fdHlwZSI6ImJlYXJlciIsInNjb3BlIjpudWxsfQ.subZFEYogpNwhqBiybH_Qs5QncRZl-FLE7rPonPeLo95CcDQgL8RUiUNOsA_GskdNKomQOXvEF9dT4nx-C2WbEprg-nn6q__SmO7XDciNaW9QG_vuq4p83sUNTtrC1JvO7MPKJ40_bnqKxXlvew0pXvNktbc7MDIvgmfX7MFXBQ"
+                                        "Authorization": Settings.token
                                     }});
             await inst.post(API,json)
             .then(

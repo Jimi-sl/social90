@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import './../css/Post.css';
+import Settings from './../appsettings';
 import defaultPhoto from './../img/default-pic.png';
 import {Link,useLocation} from 'react-router-dom';
 import axios from 'axios';
@@ -20,12 +21,12 @@ var Post = (props) => {
     const [like, setLike] = useState();
     const [repost, setRepost] = useState();
     const [showMenu,setShowMenuState] = useState(false);
-    const lApiUrl = 'http://localhost:8888/GitHub/middlewares90/api/postFtn/likeToggle/';
-    const rpApiUrl = 'http://localhost:8888/GitHub/middlewares90/api/postFtn/repostToggle/';
+    const lApiUrl = Settings.baseUrl + Settings.endPoints.lApiUrl;
+    const rpApiUrl = Settings.baseUrl + Settings.endPoints.rpApiUrl;
 
-    const iLApiUrl = 'http://localhost:8888/GitHub/middlewares90/api/postFtn/isLiked/';
-    const iRpApiUrl = 'http://localhost:8888/GitHub/middlewares90/api/postFtn/isReposted/';
-    const notifyUrl = 'http://localhost:8888/GitHub/middlewares90/api/setAlert/';
+    const iLApiUrl = Settings.baseUrl + Settings.endPoints.iLApiUrl;
+    const iRpApiUrl = Settings.baseUrl + Settings.endPoints.iRpApiUrl;
+    const notifyUrl = Settings.baseUrl + Settings.endPoints.notifyUrl;
 
 
     function hideDropdownMenu(){
@@ -52,7 +53,7 @@ var Post = (props) => {
         headers:{
             'content-Type': 'application/json',
             "Accept":"/",
-            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZCI6IjIxNDFjM2IxNzc5YTY0OWJlNjVkNDYxMWQ4NDVjNjU3MjEyZTRjODMiLCJqdGkiOiIyMTQxYzNiMTc3OWE2NDliZTY1ZDQ2MTFkODQ1YzY1NzIxMmU0YzgzIiwiaXNzIjoiIiwiYXVkIjoiQ0xJRU5UX0lEIiwic3ViIjpudWxsLCJleHAiOjE1NzUyMDQ5MzYsImlhdCI6MTU3NTIwMTMzNiwidG9rZW5fdHlwZSI6ImJlYXJlciIsInNjb3BlIjpudWxsfQ.qM0uTZMebRVgiYmUf8yXYc5EyX1WNopNeHfw6-7_hXYnkqJLWEG7i_F7ts-NRg1OERMrQgbv2REa1wwuPYY_xOAVmCOprPUzor95ynm0MYgY2zcCBIi0pe0b-FiOZlsys3zsgQ9tnm8fBqS_ZN9bmqwLfLS3mlLv-CF-1XzwqKE"
+            "Authorization": Settings.token
         }});
         inst.post(lApiUrl, json)
         .then((result) => {

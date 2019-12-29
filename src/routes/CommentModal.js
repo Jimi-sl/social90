@@ -2,18 +2,20 @@ import React,{useState} from 'react';
 import {useHistory,useLocation} from 'react-router-dom';
 import Feed from './../components/CommentFeed';
 import axios from 'axios';
+import Settings from './../appsettings';
 
 
 
 
-const notifyUrl = 'http://localhost:8888/GitHub/middlewares90/api/setAlert/';
+
+const notifyUrl = Settings.baseUrl + Settings.endPoints.setAlert;
 
 const CommentModal = () => {
   let history = useHistory();
   let location = useLocation();
   const [formValue, setText] = useState({ text: ''});
   const [showLoading, setShowLoading] = useState(false);
-  const apiUrl = "http://localhost:8888/GitHub/middlewares90/api/postFtn/comment/";
+  const apiUrl = Settings.baseUrl + Settings.endPoints.comment;
 
 
   let back = e => {
@@ -29,7 +31,7 @@ const CommentModal = () => {
     headers:{
         'content-Type': 'application/json',
         "Accept":"/",
-        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZCI6IjIxNDFjM2IxNzc5YTY0OWJlNjVkNDYxMWQ4NDVjNjU3MjEyZTRjODMiLCJqdGkiOiIyMTQxYzNiMTc3OWE2NDliZTY1ZDQ2MTFkODQ1YzY1NzIxMmU0YzgzIiwiaXNzIjoiIiwiYXVkIjoiQ0xJRU5UX0lEIiwic3ViIjpudWxsLCJleHAiOjE1NzUyMDQ5MzYsImlhdCI6MTU3NTIwMTMzNiwidG9rZW5fdHlwZSI6ImJlYXJlciIsInNjb3BlIjpudWxsfQ.qM0uTZMebRVgiYmUf8yXYc5EyX1WNopNeHfw6-7_hXYnkqJLWEG7i_F7ts-NRg1OERMrQgbv2REa1wwuPYY_xOAVmCOprPUzor95ynm0MYgY2zcCBIi0pe0b-FiOZlsys3zsgQ9tnm8fBqS_ZN9bmqwLfLS3mlLv-CF-1XzwqKE"
+        "Authorization": Settings.token
     }});
     inst.post(apiUrl, json)
     .then((result) => {
@@ -50,7 +52,7 @@ const CommentModal = () => {
     headers:{
         'content-Type': 'application/json',
         "Accept":"/",
-        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZCI6IjIxNDFjM2IxNzc5YTY0OWJlNjVkNDYxMWQ4NDVjNjU3MjEyZTRjODMiLCJqdGkiOiIyMTQxYzNiMTc3OWE2NDliZTY1ZDQ2MTFkODQ1YzY1NzIxMmU0YzgzIiwiaXNzIjoiIiwiYXVkIjoiQ0xJRU5UX0lEIiwic3ViIjpudWxsLCJleHAiOjE1NzUyMDQ5MzYsImlhdCI6MTU3NTIwMTMzNiwidG9rZW5fdHlwZSI6ImJlYXJlciIsInNjb3BlIjpudWxsfQ.qM0uTZMebRVgiYmUf8yXYc5EyX1WNopNeHfw6-7_hXYnkqJLWEG7i_F7ts-NRg1OERMrQgbv2REa1wwuPYY_xOAVmCOprPUzor95ynm0MYgY2zcCBIi0pe0b-FiOZlsys3zsgQ9tnm8fBqS_ZN9bmqwLfLS3mlLv-CF-1XzwqKE"
+        "Authorization": Settings.token
     }});
     inst.post(notifyUrl, json)
     .then((result) => {
