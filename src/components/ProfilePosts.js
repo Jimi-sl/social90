@@ -1,24 +1,24 @@
 import React from 'react';
-//import myData from './../rsrc/chatList.json';
-import ChatIcon from './../components/ChatIcon.js';
+import Post from './Post';
+// import myData from './../rsrc/posts.json';
 import axios from 'axios';
 
+const API =  'http://localhost:8888/GitHub/middlewares90/api/getProfilePosts/';
 
-const API =  'http://localhost:8888/GitHub/middlewares90/api/getChatList/';
-
-
-function ChatListGen(myData) {
+function PostList(myData) {
     const data = myData.data;
-      var listItems = data.map((detailsInfo) =>
-      <ChatIcon details={detailsInfo} key={detailsInfo.id} />
-      );
+  
+    console.log(data);
+
+    const listItems = data.map((detailsInfo) =>
+    <Post details={detailsInfo} key={detailsInfo.id} />
+    );
     return (
-      <ul>{listItems}</ul>
+      <ul className='profile-posts' >{listItems}</ul>
     );
 }
 
-class ChatList extends React.Component{
-  _isMounted = false;
+class Feed extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -29,7 +29,6 @@ class ChatList extends React.Component{
     }
     
     async componentDidMount() {
-        this._isMounted = true;
         this.setState({ isLoading: true });
         var inst = axios.create({withCredentials:true,
           headers:{
@@ -39,13 +38,11 @@ class ChatList extends React.Component{
           }});
           try {
             const result = await inst.get(API);
-            //console.log(result);
-            if (this._isMounted) {
+            console.log(result);
             this.setState({
               hits: result.data,
               isLoading: false
             });
-          }
           } catch (error) {
             this.setState({
               error,
@@ -53,17 +50,14 @@ class ChatList extends React.Component{
             });
       }
     }
-
-    componentWillUnmount() {
-      this._isMounted = false;
-    }
+  
     
     render(){
        return(
-        <ChatListGen data={this.state.hits}/>
+        <PostList data={this.state.hits}/>
       );
     }
 
   }
 
-  export default ChatList;
+  export default Feed;

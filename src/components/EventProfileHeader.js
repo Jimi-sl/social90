@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink,useRouteMatch} from 'react-router-dom';
 
 
 
 function EventProfileHeader() {
     const [navClass, setNavClass] = useState('');
+    let {url} = useRouteMatch();
 
 
     useEffect(() => {
@@ -43,7 +44,7 @@ function EventProfileHeader() {
 
                     
                 </div>
-                <ul className={"profile-nav " + navClass}><li><NavLink exact to={"/Event/Profile"} activeClassName="active">Events</NavLink></li><li><NavLink to={"/Event/Profile/Posts"} activeClassName="active">Posts</NavLink></li><li><NavLink to={"/Event/Profile/Word"} activeClassName="active">Word on Road</NavLink></li></ul>
+                <ul className={"profile-nav " + navClass}><li><NavLink exact to={`${url}`} activeClassName="active">Events</NavLink></li><li><NavLink to={`${url}/Posts`} activeClassName="active">Posts</NavLink></li><li><NavLink to={`${url}/Word`} activeClassName="active">Word on Road</NavLink></li></ul>
                 </div>
                 
             );

@@ -1,22 +1,51 @@
-import React from 'react';
+import React,{useState} from 'react';
 import defaultPhoto from './../img/social90.png';
 import './../css/Login.css';
 import {useHistory} from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import DatePicker from 'react-datepicker';
+import axios from 'axios';
 
-
-
+const API = 'http://localhost:8888/GitHub/middlewares90/api/register/';
 
 function Register(props) {
 
 	let history = useHistory();
 	let cookies = new Cookies();
+	const [startDate, setStartDate] = useState(null);
+
 
 	
-	let login = (e) => {
-		e.preventDefault();
-		cookies.remove('register');
-		history.push("/Login");
+	let login = async (e) => {
+		e.preventDefault();	
+		var date = new Intl.DateTimeFormat('en-GB', { 
+			year: '2-digit', 
+			month: '2-digit', 
+			day: '2-digit' 
+		  }).format(startDate);
+		var Obj = {
+			"name" : document.getElementById('name').value,
+			"tag" : document.getElementById('tag').value,
+			"password" : document.getElementById('password').value,
+			"email" : document.getElementById('email').value,
+			"dob" : date,	
+			"gender" : document.getElementById('gender').value,
+		
+		};
+        var json = JSON.stringify(Obj);
+            var inst = axios.create({withCredentials:true,
+                                    headers:{
+                                        'content-Type': 'application/json',
+                                        "Accept":"/",
+                                        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZCI6IjIxNDFjM2IxNzc5YTY0OWJlNjVkNDYxMWQ4NDVjNjU3MjEyZTRjODMiLCJqdGkiOiIyMTQxYzNiMTc3OWE2NDliZTY1ZDQ2MTFkODQ1YzY1NzIxMmU0YzgzIiwiaXNzIjoiIiwiYXVkIjoiQ0xJRU5UX0lEIiwic3ViIjpudWxsLCJleHAiOjE1NzUyMDQ5MzYsImlhdCI6MTU3NTIwMTMzNiwidG9rZW5fdHlwZSI6ImJlYXJlciIsInNjb3BlIjpudWxsfQ.qM0uTZMebRVgiYmUf8yXYc5EyX1WNopNeHfw6-7_hXYnkqJLWEG7i_F7ts-NRg1OERMrQgbv2REa1wwuPYY_xOAVmCOprPUzor95ynm0MYgY2zcCBIi0pe0b-FiOZlsys3zsgQ9tnm8fBqS_ZN9bmqwLfLS3mlLv-CF-1XzwqKE"
+                                    }});
+            await inst.post(API,json)
+            .then(
+                response => {console.log(response.data);cookies.remove('register');history.push("/Login");}
+            )
+            .catch(
+                error => {console.log(error);}
+            );
 	};
 
 	
@@ -27,15 +56,40 @@ function Register(props) {
 			<div className="form register">
 				<img src={defaultPhoto} alt="logo"/>
 			<form>
-				<input type="text" name="name" placeholder="Name"/>
-				<input type="password" name="tag" placeholder="Tag"/>
-				<input type="password" name="password" placeholder="Password"/>
-				<input type="email" name="email" placeholder="Email"/>
+				<input type="text" name="name" placeholder="Name" id="name"/>
+				<div className="taggy">
+				<input type="text" name="tag" placeholder="Tag" id="tag"/>
+				<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>
+				</div>
+				<input type="password" name="password" placeholder="Password" id="password"/>
+				<input type="email" name="email" placeholder="Email" id="email"/>
 				<div className="divForm">
-					<div>D.O.B.
+					{/* <div>D.O.B.
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>	
-					</div>
-					<div>Gender
+					</div> */}
+					<div className="no-padding">
+					<DatePicker
+      showPopperArrow={false}
+	  selected={startDate}
+	  placeholderText="D.O.B."
+	  popperClassName="poppy"
+	  popperPlacement="top-end"
+	  popperModifiers={{
+        offset: {
+          enabled: true,
+          offset: "0px, 10px"
+        }
+      }}
+	  onChange={date => setStartDate(date)}
+    />
+	<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>	
+	</div>
+					<div className="gender">
+						<select id="gender">
+							<option>Gender</option>
+							<option value="1">Male</option>
+							<option value="0">Female</option>
+						</select>
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>                
 					</div>
 				</div>

@@ -1,33 +1,32 @@
 import React from 'react';
-import  Feed from './../components/Feed';
+import  ProfilePosts from './../components/ProfilePosts';
 import  ProfileHeader from './../components/ProfileHeader';
 import './../css/Profile.css';
-import EventList from './../components/EventList';
+import PlugList from './../components/PlugList';
 import LyncsList from './../components/LyncsList';
+import {Switch,Route,useRouteMatch} from 'react-router-dom';
 
- const ProfileContent = (props) => {
-     let path = props.location;
-if(path === '/User-Profile/Jimi'){
-    return(<Feed/>);
-}
-else if(path === '/User-Profile/Jimi/Lyncs'){
-    return(<LyncsList/>);
-}
-else if(path === '/User-Profile/Jimi/Events'){
-    return(<EventList/>);
-}else
-{
-    return(<p>{path}</p>);
-}
- 
-}
+
 
 function ProfileArea(props) {
+
+    let {path} = useRouteMatch();
+
     return (
 
                 <div className="profile-area">
                 <ProfileHeader/>
-                <ProfileContent location={props.path}/>
+                <Switch>
+                    <Route exact path={path}>
+                    <ProfilePosts/>
+                    </Route>
+                    <Route exact path={`${path}/Lyncs`}>
+                    <LyncsList/>
+                    </Route>
+                    <Route exact path={`${path}/Plugs`}>
+                    <PlugList/>
+                    </Route>
+                </Switch>
                 </div>
             );
 }

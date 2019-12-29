@@ -3,7 +3,7 @@ import './../css/LyncCard.css';
 import defaultPhoto from './../img/default-pic.png';
 
 
-class LyncCard extends React.Component{
+class PlugCard extends React.Component{
 
     render(){
         return (
@@ -11,14 +11,13 @@ class LyncCard extends React.Component{
                 <div>
                 <div className="profile-pic"><img  alt="logo"  className="mob" src={defaultPhoto}/></div>
                 <div>
-                    <span className="name">{this.props.details.Name}</span>
-                    <span className="tag">{this.props.details.Tag}</span>
+                    <span className="name">{this.props.details.name}</span>
+                    <span className="tag">{this.props.details.bio}</span>
                 </div>
                 </div>
-                {this.props.details.mutual === "2"?<span>Mutual</span> :null}
                     
                     <p>{this.props.details.bio}</p>
-                    <button>Lynced</button>
+                    <button>Plugged</button>
 
                     
                 </li>
@@ -28,4 +27,4 @@ class LyncCard extends React.Component{
     
 
 }
-export default LyncCard;
+export default PlugCard;

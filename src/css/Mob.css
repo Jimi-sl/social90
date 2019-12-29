@@ -23,6 +23,7 @@ div.modalPost{width: calc(100% - 29px)}
 
 header > input.mob{
 width: calc(100% - (((12.5vh * 0.55) * 3.56) + 70px));margin-left: 15px;transform: translateY(10%);}
+div.chat-container {width: calc(100% - 30px);}
 }
 
 @media only screen and (max-width: 800px){

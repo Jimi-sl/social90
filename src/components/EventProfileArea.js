@@ -4,30 +4,28 @@ import WordList from './../components/WordList';
 import  Feed from './../components/Feed';
 import  EventProfileHeader from './../components/EventProfileHeader';
 import './../css/Profile.css';
+import {Switch,Route,useRouteMatch} from 'react-router-dom';
 
-
-const ProfileContent = (props) => {
-    let path = props.location;
-    if(path === '/Event/Profile'){
-    return(<EventList/>);
-    }
-    else if(path === '/Event/Profile/Posts'){
-    return(<Feed/>);
-    }
-    else if(path === '/Event/Profile/Word'){
-    return(<WordList/>);
-    }else
-    {
-    return(<p>{path}</p>);
-    }
-}
 
 function EventProfileArea(props) {
+
+    let {path} = useRouteMatch();
+
     return (
 
                 <div className="profile-area">
                 <EventProfileHeader/>
-                <ProfileContent location={props.path}/>
+                <Switch>
+                    <Route exact path={path}>
+                    <EventList/>
+                    </Route>
+                    <Route exact path={`${path}/Posts`}>
+                    <Feed/>
+                    </Route>
+                    <Route exact path={`${path}/Word`}>
+                    <WordList/>
+                    </Route>
+                </Switch>
                 </div>
             );
 }
