@@ -2,9 +2,10 @@ import React,{useState,useEffect} from 'react';
 import {useHistory,NavLink,useLocation} from 'react-router-dom';
 import axios from 'axios';
 import LyncCard from './../components/LyncCard';
+import Settings from './../appsettings';
 
 
-const API =  'http://localhost:8888/GitHub/middlewares90/api/getReposts/';
+const API =  Settings.baseUrl + Settings.endPoints.getReposts;
 
 const RepostsList = (myData) => {
   const data = myData.data;
