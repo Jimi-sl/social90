@@ -7,15 +7,28 @@ import logoDesk from './img/social90.png';
 import logoMob from './img/90.png';
 import Cookies from 'universal-cookie';
 import fakeAuth from './AuthCookie';
+import axios from 'axios';
+import Settings from './appsettings';
+
 
 function Logout(props){
     function handleAm(){
 		props.onChange(fakeAuth.isAuthenticated);
-	}
-
+    }
+    
     let history = useHistory();
     return(
-        <a href='/Login' value={fakeAuth.isAuthenticated} onClick={(e) =>{e.preventDefault();fakeAuth.signout(() => history.push("/Login"));handleAm();}}>Logout</a>
+        <a href='/Login' value={fakeAuth.isAuthenticated} onClick={(e) =>{e.preventDefault();sessionStorage.removeItem('id');
+        fakeAuth.signout(() => history.push("/Login"));handleAm();}}>Logout</a>
+    );
+}
+function ProfileLink({ to }) {
+    
+  
+    return (
+      <li>
+        <NavLink to={{pathname : '/9o/' + to, state : {id : sessionStorage.getItem('id')}}} activeClassName="active-nav">My Profile</NavLink>
+      </li>
     );
 }
 
@@ -24,7 +37,7 @@ class Nav extends React.Component {
     constructor(props) {
         super(props);
         this.navToggle = this.navToggle.bind(this);
-        this.state = {width : window.innerWidth};
+        this.state = {width : window.innerWidth, tag: ''};
         this.closePopUp = this.closePopUp.bind(this);
         this.handleAm = this.handleAm.bind(this);
         this.cookies = new Cookies();
@@ -58,8 +71,28 @@ class Nav extends React.Component {
     updateDimensions = () => {
         this.setState({ width: window.innerWidth});
     };
-      componentDidMount() {
+      async componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
+        var inst = axios.create({withCredentials:true,
+            headers:{
+                'content-Type': 'application/json',
+                "Accept":"/",
+                "Authorization": Settings.token
+            }});var Obj = {
+              "id" : sessionStorage.getItem("id"),
+            };
+                var json = JSON.stringify(Obj);
+                const API = Settings.baseUrl + Settings.endPoints.getUserInfo;
+                try {
+              const result = await inst.post(API,json);
+              console.log(result.data[0].Tag);
+              this.setState({
+                tag: result.data[0].Tag,
+              }); 
+            } catch (error) {
+                console.log(error);
+            }
+        
         this.closePopUp();
     }
       componentWillUnmount() {
@@ -77,7 +110,7 @@ class Nav extends React.Component {
 
                 <span>Chat</span></NavLink></li><li><NavLink to={'/Alerts'} activeClassName="active-nav"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"></path></svg>
                 <span>Alert</span></NavLink></li></ul><span></span><div className="nav-toggle" onClick={(e) => this.navToggle(e)}>
-                <div><div></div><span>Jimi</span></div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8">
+                <div><div></div><span>{this.state.tag}</span></div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8">
                     <path stroke="none" fill="inherit" fillRule="nonzero" d="M13.828.307a.846.846 0 0 0-.619-.261H.881a.846.846 0 0 0-.62.261.847.847 0 0 0-.261.62c0 .238.087.444.261.619L6.426 7.71c.174.174.38.262.619.262a.846.846 0 0 0 .619-.262l6.164-6.164a.847.847 0 0 0 .262-.62.848.848 0 0 0-.262-.619z" opacity=".48"/>
                 </svg>
                 </div>
@@ -92,7 +125,7 @@ class Nav extends React.Component {
                 <span>Chat</span></NavLink></li><li><NavLink to={'/Alerts'} activeClassName="active-nav"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"></path></svg>
                 <span>Alert</span></NavLink></li></ul>
                 </li>
-                <li><NavLink to={'/User-Profile/Jimi'} activeClassName="active-nav">My Profile</NavLink></li>	
+                <ProfileLink to={this.state.tag}/>
                 <li><NavLink to={'/Bookmarks'} activeClassName="active-nav">Bookmarks</NavLink></li>	
                 <li><NavLink to={'/Settings'} activeClassName="active-nav">Settings</NavLink></li>	
                 <li><Logout value={this.props.value} onChange={this.handleAm}/></li>	

@@ -36,8 +36,12 @@ class PlugList extends React.Component{
               "Accept":"/",
               "Authorization": Settings.token
           }});
+          var Obj = {
+            "id" : this.props.location.state !== undefined ? this.props.location.state.id : this.props.id,
+          };
+              var json = JSON.stringify(Obj);
           try {
-            const result = await inst.get(API);
+            const result = await inst.post(API,json);
             console.log(result);
             this.setState({
               hits: result.data,

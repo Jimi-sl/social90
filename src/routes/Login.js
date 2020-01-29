@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import defaultPhoto from './../img/social90.png';
 import './../css/Login.css';
 import {useHistory,useLocation} from 'react-router-dom';
@@ -13,6 +13,14 @@ function Login(props) {
 
 	let history = useHistory();
 	let location = useLocation();
+	const [value, setValue] = useState(
+		sessionStorage.getItem('id') || ''
+	  );
+	  useEffect(() => {
+		sessionStorage.setItem('id', value);
+	  }, [value]);
+	
+	
 	
 	let { from } = location.state || { from: { pathname: "/Feed" } };
 	let login = async (e) => {
@@ -31,7 +39,7 @@ function Login(props) {
                                     }});
             await inst.post(API,json)
             .then(
-                response => {console.log(response.data);fakeAuth.authenticate(() => {history.replace(from);});handleAm();}
+                response => {setValue(response.data);fakeAuth.authenticate(() => {history.replace(from);});handleAm();}
             )
             .catch(
                 error => {console.log(error);}

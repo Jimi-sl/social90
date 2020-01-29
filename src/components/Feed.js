@@ -9,7 +9,6 @@ const API =  Settings.baseUrl + Settings.endPoints.getPostFeeds;
 function PostList(myData) {
     const data = myData.data;
   
-    //console.log(data);
 
     const listItems = data.map((detailsInfo) =>
     <Post details={detailsInfo} key={detailsInfo.id} />
@@ -36,8 +35,12 @@ class Feed extends React.Component{
               "Accept":"/",
               "Authorization": Settings.token
           }});
+          var Obj = {
+            "id" : sessionStorage.getItem("id"),
+          };
+              var json = JSON.stringify(Obj);
           try {
-            const result = await inst.get(API);
+            const result = await inst.post(API,json);
             this.setState({
               hits: result.data,
               isLoading: false

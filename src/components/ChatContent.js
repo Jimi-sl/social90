@@ -20,9 +20,10 @@ function ChatContentGen(prop) {
               "Accept":"/",
               "Authorization": Settings.token
           }});
-          const id = props.state.receiver_id === "1" ? props.state.user_id : props.state.receiver_id;
+          const id = props.state.receiver_id === sessionStorage.getItem("id") ? props.state.user_id : props.state.receiver_id;
           var Obj = {
             "receiverId" : id,
+            "id" : sessionStorage.getItem("id"),
           };
           var json = JSON.stringify(Obj);
           try {
@@ -37,10 +38,11 @@ function ChatContentGen(prop) {
      
     const saveProduct = (e) => {
       e.preventDefault();
-      const id = props.state.receiver_id === "1" ? props.state.user_id : props.state.receiver_id;
+      const id = props.state.receiver_id === sessionStorage.getItem("id") ? props.state.user_id : props.state.receiver_id;
       var Obj = {
         "text" : formValue.text,
-        "receiverId" : id
+        "receiverId" : id,
+        "id" : sessionStorage.getItem("id")
        };
       var json = JSON.stringify(Obj);
       var inst = axios.create({withCredentials:true,

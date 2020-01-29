@@ -19,7 +19,7 @@ function PostList(myData) {
     );
 }
 
-class Feed extends React.Component{
+class ProfilePosts extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -37,8 +37,13 @@ class Feed extends React.Component{
               "Accept":"/",
               "Authorization": Settings.token
           }});
+          console.log(this.props);
+          var Obj = {
+            "id" : this.props.location.state !== undefined ? this.props.location.state.id : this.props.id,
+          };
+              var json = JSON.stringify(Obj);
           try {
-            const result = await inst.get(API);
+            const result = await inst.post(API,json);
             console.log(result);
             this.setState({
               hits: result.data,
@@ -61,4 +66,4 @@ class Feed extends React.Component{
 
   }
 
-  export default Feed;
+  export default ProfilePosts;

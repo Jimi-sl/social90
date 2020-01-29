@@ -38,7 +38,7 @@ function PrivateRoute({ children, ...rest }) {
           children
         ) : (
           <Redirect
-            to={{
+             to={{
               pathname: "/Login",
               state: { from: location }
             }}
@@ -102,7 +102,7 @@ const RouterNav = (props) => {
         <PrivateRoute path="/Bookmarks">
         <Bookmarks/>   
         </PrivateRoute>
-        <PrivateRoute path="/User-Profile/:tag">
+        <PrivateRoute path="/9o/:tag">
         <Profile location={location}/> 
         </PrivateRoute>
         <PrivateRoute path="/Events">

@@ -130,7 +130,7 @@ var Post = (props) => {
                 </ul>
                 {props.details.repost_id !== "0" ?<p className="repost-info">Repost by <span>{props.details.RepostTag}</span></p> : null}
                 <div className="user-info">
-                <Link to={'/User-Profile/Jimi'}>
+                <Link to={{pathname : '/9o/' + props.details.Tag, state : {id :props.details.user_id}}}>
                 <div><img  alt="logo"  className="mob" src={defaultPhoto}/></div>
                 <span>{props.details.Tag}</span>
                 <span>{props.details.date}</span>

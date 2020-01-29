@@ -45,3 +45,4 @@ div.profile-area > ul.profile-posts{padding-top: 50px;}
 ul.profile-posts {
     padding-bottom: 90px;
 }
+button.lync{background-color: rgba(0,0,0,0); border:2px solid #3f93e9; color: #3f93e9;}

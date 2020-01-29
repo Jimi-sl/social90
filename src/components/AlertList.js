@@ -34,9 +34,12 @@ class AlertList extends React.Component{
               'content-Type': 'application/json',
               "Accept":"/",
               "Authorization": Settings.token
-          }});
+          }});var Obj = {
+            "id" : sessionStorage.getItem("id"),
+          };
+              var json = JSON.stringify(Obj);
           try {
-            const result = await inst.get(API);
+            const result = await inst.post(API,json);
             console.log(result);
             this.setState({
               hits: result.data,
