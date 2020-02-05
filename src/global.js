@@ -25,7 +25,7 @@ export const GlobalStyles = createGlobalStyle`
 
   .nav-toggle svg{fill: ${({ theme }) => theme.text};}
   
-  .action-btn > svg, .routeNav > svg, .plugs svg, .demo-ev svg, .theme-setter svg,.event-footer > svg:nth-of-type(1), .event-footer > svg:nth-of-type(2),.event-content > span > svg, .action-icon > svg.comment,li.Post  svg, li.Comment  svg,header svg,li.profile-deets > svg, .modalPost svg,.settings-container > h2 > a > svg,.page-title > h1 > svg{stroke: ${({ theme }) => theme.text};}
+  .action-btn > svg, .routeNav > svg, .plugs svg, .demo-ev svg, .theme-setter svg,.event-footer > svg:nth-of-type(1), .event-footer > svg:nth-of-type(2),.event-content > span > svg, .action-icon > svg.comment,li.Post  svg, li.Comment  svg,header svg,li.profile-deets > svg, .modalPost svg,.settings-container > h2 > a > svg,.page-title > h1 > svg,.event-search > a > svg{stroke: ${({ theme }) => theme.text};}
 
   .modal{background:${({ theme }) => theme.modal};}
 
@@ -33,12 +33,12 @@ export const GlobalStyles = createGlobalStyle`
 
   .routeNav,li.Post, li.Comment, .to-lync, .plugs, .alert, .profile-header,.page-title, .demo-ev > div, .ex-event,.post-button,.pop-up-nav,.chat-list > ul > li, li.profile-deets,.modalPost, .post-menu{background:${({ theme }) => theme.backColor}; border:1px solid ${({ theme }) => theme.toggleBorder};}
   
-  header > input, header, .chat-list, .chat-content,.profile-nav.fixed, .modalPost form > textarea,.postCommentBox,.set-cont > input[type*='text'],.select-option{border-style: none; border:1px solid ${({ theme }) => theme.toggleBorder};}
+  header > input, header, .chat-list, .chat-content,.profile-nav.fixed, .modalPost form > textarea,.postCommentBox,.set-cont > input[type*='text'],.select-option,.event-search > input{border-style: none; border:1px solid ${({ theme }) => theme.toggleBorder};}
 
 
   li.profile-deets > span{color:${({ theme }) => theme.backColor}}
 
-  .chat-content > div > form,.chat-content > div > form > textarea,.chat-container h1,ul.profile-nav.fixed{background:${({ theme }) => theme.backColor};}
+  .chat-content > div > form,.chat-content > div > form > textarea,.chat-container h1,ul.profile-nav.fixed,.event-search > input{background:${({ theme }) => theme.backColor};}
 
   .action-btn, .event-footer,h3.bottom,.chat-content > div > form,.settings-container > h2:nth-of-type(1){ border-style: none;border-top:1px solid ${({ theme }) => theme.toggleBorder};}
 

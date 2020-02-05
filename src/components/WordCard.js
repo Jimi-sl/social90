@@ -11,16 +11,16 @@ class WordCard extends React.Component{
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>                
                 <div>
                 <div className="party-title">
-                    <span className="name">{this.props.details.name}</span>
-                    <span className="date">{this.props.details.date}</span>
+                    <span className="name">{this.props.details.EventName}</span>
+                    <span className="date">{this.props.details.EventDate}</span>
                 </div>
                 <div className="party-user-details">
                 <div className="profile-pic"><img  alt="logo"  className="mob" src={defaultPhoto}/></div>
-                <span className="tag">{this.props.details.tag}</span>
+                <span className="tag">{this.props.details.Tag}</span>
                 <div className="emoji"></div>
                 </div>
                 </div>               
-                    <p>{this.props.details.comment}</p> 
+                    <p>{this.props.details.text}</p> 
                 </li>
                 );
             

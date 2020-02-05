@@ -130,9 +130,9 @@ var Post = (props) => {
                 </ul>
                 {props.details.repost_id !== "0" ?<p className="repost-info">Repost by <span>{props.details.RepostTag}</span></p> : null}
                 <div className="user-info">
-                <Link to={{pathname : '/9o/' + props.details.Tag, state : {id :props.details.user_id}}}>
+                <Link to={props.details.Tag !== undefined ?{pathname : '/9o/' + props.details.Tag, state : {id :props.details.user_id}}:{pathname : '/so/' + props.details.Partner, state : {id :props.details.partner_id}}}>
                 <div><img  alt="logo"  className="mob" src={defaultPhoto}/></div>
-                <span>{props.details.Tag}</span>
+                <span>{props.details.Tag === undefined ? props.details.Partner : props.details.Tag}</span>
                 <span>{props.details.date}</span>
                 </Link>
                 </div>

@@ -8,7 +8,6 @@ import Settings from './../appsettings';
 const API = Settings.baseUrl + Settings.endPoints.getUserInfoByTag;
 
 function Profile(props) {
-  console.log(props);
   let [userId,setUserId] = useState(props.location.state !== undefined ? props.location.state.id : 0);
   let { tag } = useParams();
 

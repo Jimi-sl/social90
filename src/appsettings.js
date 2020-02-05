@@ -31,7 +31,13 @@ const Settings =  {
         "getUserInfo" : "getUserInfo/",
         "getUserInfoByTag" : "getUserInfoByTag/",
         "isLynced" : "isLynced/",
-        "lyncToggle" : "lyncToggle/"
+        "lyncToggle" : "lyncToggle/",
+        "getEvents" : "getEvents/",
+        "getEventDetails" : "getEventDetails/",
+        "getPartnerDetails" : "getPartnerDetails/",
+        "getPartnerEvents" : "getPartnerEvents/",
+        "getPartnerPosts" : "getPartnerPosts/",
+        "getReviews" : "getReviews/"
     }
 }
 export default Settings;

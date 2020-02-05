@@ -1,7 +1,7 @@
 import React from 'react';
-import EventList from './../components/EventList';
+import EventPartnerList from './../components/EventPartnerList';
 import WordList from './../components/WordList';
-import  Feed from './../components/Feed';
+import  PartnerPosts from './../components/PartnerPosts';
 import  EventProfileHeader from './../components/EventProfileHeader';
 import './../css/Profile.css';
 import {Switch,Route,useRouteMatch} from 'react-router-dom';
@@ -14,16 +14,16 @@ function EventProfileArea(props) {
     return (
 
                 <div className="profile-area">
-                <EventProfileHeader/>
+                <EventProfileHeader details={props.details}/>
                 <Switch>
                     <Route exact path={path}>
-                    <EventList/>
+                    <EventPartnerList details={props.details}/>
                     </Route>
                     <Route exact path={`${path}/Posts`}>
-                    <Feed/>
+                    <PartnerPosts details={props.details}/>
                     </Route>
                     <Route exact path={`${path}/Word`}>
-                    <WordList/>
+                    <WordList details={props.details}/>
                     </Route>
                 </Switch>
                 </div>

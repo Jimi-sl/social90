@@ -3,7 +3,7 @@ import {NavLink,useRouteMatch} from 'react-router-dom';
 
 
 
-function EventProfileHeader() {
+function EventProfileHeader(props) {
     const [navClass, setNavClass] = useState('');
     let {url} = useRouteMatch();
 
@@ -34,17 +34,17 @@ function EventProfileHeader() {
                 <div>
                 <div className="profile-pic"></div>
                 <div>
-                    <span className="name">Block Party</span>
-                    <span className="tag">Partner</span>
+                    <span className="name">{props.details.name}</span>
+                    <span className="tag">{props.details.type}</span>
                 </div>
                 </div>
                     
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et </p>
+                    <p>{props.details.bio}</p>
                     <button>Plug</button>
 
                     
                 </div>
-                <ul className={"profile-nav " + navClass}><li><NavLink exact to={`${url}`} activeClassName="active">Events</NavLink></li><li><NavLink to={`${url}/Posts`} activeClassName="active">Posts</NavLink></li><li><NavLink to={`${url}/Word`} activeClassName="active">Word on Road</NavLink></li></ul>
+                <ul className={"profile-nav " + navClass}><li><NavLink exact to={{pathname:`${url}`,state:{id : props.details.id}}} activeClassName="active">Events</NavLink></li><li><NavLink to={{pathname:`${url}/Posts`,state:{id : props.details.id}}} activeClassName="active">Posts</NavLink></li><li><NavLink to={{pathname:`${url}/Word`,state:{id : props.details.id}}} activeClassName="active">Word on Road</NavLink></li></ul>
                 </div>
                 
             );

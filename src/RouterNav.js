@@ -27,6 +27,7 @@ const Account = lazy(() => import('./components/Account.js'));
 const Privacy = lazy(() => import('./components/Privacy.js'));
 const Notifications = lazy(() => import('./components/Notifications.js'));
 const Deactivation = lazy(() => import('./components/Deactivation.js'));
+const EventSearchModal = lazy(() => import('./routes/EventSearchSettings.js'));
 
 
 function PrivateRoute({ children, ...rest }) {
@@ -108,7 +109,7 @@ const RouterNav = (props) => {
         <PrivateRoute path="/Events">
         <Events/>   
         </PrivateRoute>
-        <PrivateRoute path="/Event/Details">
+        <PrivateRoute path="/Event/Details/:id">
         <EventDeets/>   
         </PrivateRoute>
         <PrivateRoute path="/Settings/Account">
@@ -123,14 +124,15 @@ const RouterNav = (props) => {
         <PrivateRoute path="/Settings/Deactivation">
         <Deactivation/>   
         </PrivateRoute>
-        <PrivateRoute path="/Event/Profile">
+        <PrivateRoute path="/so/:name">
         <EventProfile location={location} />    
         </PrivateRoute>
         </Switch>
         {/* Show the modal when a background page is set */}
       {background && <PrivateRoute path="/Post"><Post/></PrivateRoute>}
       {background && <PrivateRoute path="/Comment"><Comment/></PrivateRoute>}
-      {background && <PrivateRoute path="/Stats/Likes"><LikesModal/></PrivateRoute>}    
+      {background && <PrivateRoute path="/Stats/Likes"><LikesModal/></PrivateRoute>} 
+      {background && <PrivateRoute path="/Event/Search/Settings"><EventSearchModal/></PrivateRoute>}       
       {background && <PrivateRoute path="/Stats/Reposts"><RepostsModal/></PrivateRoute>}    
       <Route path='/Login'>{
       (typeof fakeAuth.isAuthenticated) === "string" ? 
