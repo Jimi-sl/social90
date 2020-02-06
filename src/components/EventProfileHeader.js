@@ -1,12 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import {NavLink,useRouteMatch} from 'react-router-dom';
+import axios from 'axios';
+import Settings from './../appsettings';
+
 
 
 
 function EventProfileHeader(props) {
     const [navClass, setNavClass] = useState('');
+    const [isPlugged, setisPlugged] = useState();
     let {url} = useRouteMatch();
 
+    let plugToggle = async (e) => {
+        e.preventDefault();
+        var inst = axios.create({withCredentials:true,
+        headers:{
+            'content-Type': 'application/json',
+            "Accept":"/",
+            "Authorization": Settings.token
+        }});
+        var Obj = {
+            "userId" : sessionStorage.getItem("id"),
+            "plugId" : props.details.id
+        };
+            var json = JSON.stringify(Obj);
+            const AP = Settings.baseUrl + Settings.endPoints.plugToggle;
+            try {
+            const result = await inst.post(AP,json);           
+            setisPlugged(result.data);         
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
         var container = document.getElementsByClassName("body-container")[0];
@@ -25,7 +50,28 @@ function EventProfileHeader(props) {
 
             }
         });
-    },[]);
+        let isplugged = async () => {
+            var inst = axios.create({withCredentials:true,
+            headers:{
+                'content-Type': 'application/json',
+                "Accept":"/",
+                "Authorization": Settings.token
+            }});
+            var Obj = {
+                "userId" : sessionStorage.getItem("id"),
+	            "plugId" : props.details.id
+            };
+                var json = JSON.stringify(Obj);
+                const AP = Settings.baseUrl + Settings.endPoints.isPlugged;
+                try {
+                const result = await inst.post(AP,json);
+                setisPlugged(result.data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        isplugged();
+    },[props.details.id]);
     
     return (
 
@@ -40,7 +86,7 @@ function EventProfileHeader(props) {
                 </div>
                     
                     <p>{props.details.bio}</p>
-                    <button>Plug</button>
+                    {isPlugged === 1 ?<button onClick={plugToggle}>Plugged</button> : <button className='lync' onClick={plugToggle}>Plug</button>}
 
                     
                 </div>

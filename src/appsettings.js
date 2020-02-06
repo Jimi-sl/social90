@@ -37,7 +37,9 @@ const Settings =  {
         "getPartnerDetails" : "getPartnerDetails/",
         "getPartnerEvents" : "getPartnerEvents/",
         "getPartnerPosts" : "getPartnerPosts/",
-        "getReviews" : "getReviews/"
+        "getReviews" : "getReviews/",
+        "isPlugged" : "isPlugged/",
+        "plugToggle" : "plugToggle/"
     }
 }
 export default Settings;
