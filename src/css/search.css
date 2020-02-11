@@ -1,0 +1,11 @@
+.searchNav > li{font-weight: 600;
+    margin: 0px;
+    font-size: 16px;
+    letter-spacing: 1.6px;
+    padding: 14px 0px;
+    display: inline-block;
+    margin-left: 28px;
+}
+
+ul.searchNav{padding: 0px;margin-top:70px; border-radius: 3px;}
+.searchContent > div > ul > li {border-radius: 3px;}

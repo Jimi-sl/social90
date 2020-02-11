@@ -28,6 +28,7 @@ const Privacy = lazy(() => import('./components/Privacy.js'));
 const Notifications = lazy(() => import('./components/Notifications.js'));
 const Deactivation = lazy(() => import('./components/Deactivation.js'));
 const EventSearchModal = lazy(() => import('./routes/EventSearchSettings.js'));
+const Search = lazy(() => import('./routes/Search.js'));
 
 
 function PrivateRoute({ children, ...rest }) {
@@ -127,7 +128,11 @@ const RouterNav = (props) => {
         <PrivateRoute path="/so/:name">
         <EventProfile location={location} />    
         </PrivateRoute>
+        <PrivateRoute path="/Search">
+        <Search/>   
+        </PrivateRoute>
         </Switch>
+        
         {/* Show the modal when a background page is set */}
       {background && <PrivateRoute path="/Post"><Post/></PrivateRoute>}
       {background && <PrivateRoute path="/Comment"><Comment/></PrivateRoute>}

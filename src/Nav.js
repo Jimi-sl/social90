@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink,useHistory} from 'react-router-dom';
+import {NavLink,useHistory,withRouter} from 'react-router-dom';
 import './css/Nav.css';
 
 
@@ -37,9 +37,13 @@ class Nav extends React.Component {
     constructor(props) {
         super(props);
         this.navToggle = this.navToggle.bind(this);
-        this.state = {width : window.innerWidth, tag: ''};
+        this.state = {width : window.innerWidth, tag: '',input: '', redirect: false};
         this.closePopUp = this.closePopUp.bind(this);
         this.handleAm = this.handleAm.bind(this);
+        this.keyPressed = this.keyPressed.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.submitMessage = this.submitMessage.bind(this);
+        //this.renderRedirect = this.renderRedirect.bind(this);
         this.cookies = new Cookies();
     }
 
@@ -67,6 +71,28 @@ class Nav extends React.Component {
         }
 
       };
+
+    keyPressed(event) {
+      if (event.key === "Enter") {
+        this.submitMessage()
+      }
+    }
+
+    submitMessage() {
+      if(this.state.input !== "")
+      this.setState( {redirect: true} );
+    }
+    renderRedirect = () => {
+      if (this.state.redirect) {
+        this.setState( {redirect: false} );  
+        this.props.history.push("/Search?q=" + this.state.input)
+        //return <Redirect to={{pathname:"/Search?q=" + this.state.input}} /> 
+      }
+    }
+
+    handleChange(event) {
+      this.setState( {input: event.target.value} );
+    }
 
     updateDimensions = () => {
         this.setState({ width: window.innerWidth});
@@ -102,10 +128,11 @@ class Nav extends React.Component {
     render(){
         return (
             <header>
+              {this.renderRedirect()}
                 <NavLink to={'/Feed'}>
                 <img src={this.state.width < 801 ? logoMob : logoDesk} alt="logo" className="mob" />
                 </NavLink>
-                <input type="search" name="" placeholder="Search" className="mob"/> <div className="nav"><ul><li><NavLink exact to={'/Feed'} activeClassName="active-nav"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <input type="search" name="" placeholder="Search" className="mob" onChange={this.handleChange} onKeyPress={this.keyPressed} value={this.state.input}/> <div className="nav"><ul><li><NavLink exact to={'/Feed'} activeClassName="active-nav"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                 <span>Home</span></NavLink></li><li><NavLink to={'/Chats'} activeClassName="active-nav"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
 
                 <span>Chat</span></NavLink></li><li><NavLink to={'/Alerts'} activeClassName="active-nav"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"></path></svg>
@@ -135,4 +162,4 @@ class Nav extends React.Component {
         }
   }
 
-export default Nav;
+export default withRouter(Nav);
