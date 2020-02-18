@@ -31,7 +31,7 @@ export const GlobalStyles = createGlobalStyle`
 
   header > div > span{background:${({ theme }) => theme.text};}
 
-  .routeNav,li.Post, li.Comment, .to-lync, .plugs, .alert, .profile-header,.page-title, .demo-ev > div, .ex-event,.post-button,.pop-up-nav,.chat-list > ul > li, li.profile-deets,.modalPost, .post-menu, .searchNav{background:${({ theme }) => theme.backColor}; border:1px solid ${({ theme }) => theme.toggleBorder};}
+  .routeNav,li.Post, li.Comment, .to-lync, .plugs, .alert, .profile-header,.page-title, .demo-ev > div, .ex-event,.post-button,.pop-up-nav,.chat-list > ul > li, li.profile-deets,.modalPost, .post-menu, .searchNav,.people > ul > li,.partners > ul > li{background:${({ theme }) => theme.backColor}; border:1px solid ${({ theme }) => theme.toggleBorder};}
   
   header > input, header, .chat-list, .chat-content,.profile-nav.fixed, .modalPost form > textarea,.postCommentBox,.set-cont > input[type*='text'],.select-option,.event-search > input{border-style: none; border:1px solid ${({ theme }) => theme.toggleBorder};}
 

@@ -39,7 +39,11 @@ const Settings =  {
         "getPartnerPosts" : "getPartnerPosts/",
         "getReviews" : "getReviews/",
         "isPlugged" : "isPlugged/",
-        "plugToggle" : "plugToggle/"
+        "plugToggle" : "plugToggle/",
+        "getPeopleSearch" : "getPeopleSearch/",
+        "getPartnerSearch" : "getPartnerSearch/",
+        "getEventsSearch" : "getEventsSearch/",
+        "getPostsSearch" : "getPostsSearch/"
     }
 }
 export default Settings;
